@@ -9,8 +9,8 @@
     <style>
         table {
             border-collapse: collapse;
-            width: 30%;
-            max-width: 300px;
+            width: 50%;
+            max-width: 350px;
         }
         
         tr {
@@ -21,23 +21,24 @@
         tr:nth-child(even) {
             background-color: gainsboro;
         }
-        
-        td {
-            text-align: right;
-            border-width: 1px;
-            border-style: solid;
-            border-color: black;
-            width: 33.33%;
-            position: relative;
+        tr:nth-child(odd) {
+            background-color: rgb(192, 192, 192);
         }
         
-        td:first-child {
-            text-align: left;
+        td {
+            text-align: center;
+            border-color: black;
+            border-radius: 50%;
+            width: 33.33%;
+            position: relative;
+            
         }
         
         td:hover {
+            transition: background-color 1s;
             background-color: black;
             color: white;
+            transition: color 1s;
         }
         
         td:after {
@@ -46,92 +47,95 @@
             margin-top: 100%;
         }
         
-        td .carre {
+        td .rond {
             position: absolute;
             vertical-align: middle;
+            width: 70%;
+            height: 70%;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
+            display: block;
+            margin: auto;
         }
     </style>
 </head>
 
 <body>
-    <a href="ex5.html">Jettes un oeil sur l'exercice 5! Tu vas être supris !</a>
     <table>
-        <tr>
-            <th>
-                <div class="carre">~FILMS~</div>
+        <tr align="center">
+            <th valign="center">
+                <div class="rond">~FILMS~</div>
             </th>
-            <th>
-                <div class="carre">~DATE~</div>
+            <th valign="center">
+                <div class="rond">~DATE~</div>
             </th>
-            <th>
-                <div class="carre">~NOTE~</div>
+            <th valign="center">
+                <div class="rond">~NOTE~</div>
             </th>
         </tr>
         <tr>
-            <td>
-                <div class="carre">Les Animaux Fantastiques</div>
+            <td valign="center">
+                <div class="rond">Les Animaux Fantastiques</div>
             </td>
-            <td>
-                <div class="carre">2016</div>
+            <td valign="center">
+                <div class="rond">2016</div>
             </td>
-            <td>
-                <div class="carre">5/5</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="carre">Les Gardiens de la Galaxie</div>
-            </td>
-            <td>
-                <div class="carre">2014</div>
-            </td>
-            <td>
-                <div class="carre">5/5</div>
+            <td align="center">
+                <div class="rond">5/5</div>
             </td>
         </tr>
         <tr>
-            <td>
-                <div class="carre">American Nightmare</div>
+            <td align="center">
+                <div class="rond">Les Gardiens de la Galaxie</div>
             </td>
-            <td>
-                <div class="carre">2013</div>
+            <td align="center">
+                <div class="rond">2014</div>
             </td>
-            <td>
-                <div class="carre">4/5</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="carre">Harry Potter et le prisonnier d'Azkaban</div>
-            </td>
-            <td>
-                <div class="carre">1999</div>
-            </td>
-            <td>
-                <div class="carre">3/5</div>
+            <td align="center">
+                <div class="rond">5/5</div>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <div class="carre">Le Seigneur des Anneaux</div>
+            <td align="center">
+                <div class="rond">American Nightmare</div>
             </td>
-            <td>
-                <div class="carre">3/5</div>
+            <td align="center">
+                <div class="rond">2013</div>
+            </td>
+            <td align="center">
+                <div class="rond">4/5</div>
             </td>
         </tr>
         <tr>
-            <td>
-                <div class="carre">Burlesque</div>
+            <td align="center">
+                <div class="rond">Harry Potter et le prisonnier d'Azkaban</div>
             </td>
-            <td>
-                <div class="carre">2010</div>
+            <td align="center">
+                <div class="rond">1999</div>
             </td>
-            <td>
-                <div class="carre">3/5</div>
+            <td align="center">
+                <div class="rond">3/5</div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <div class="rond">Le Seigneur des Anneaux</div>
+            </td>
+            <td align="center">
+                <div class="rond">3/5</div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <div class="rond">Burlesque</div>
+            </td>
+            <td align="center">
+                <div class="rond">2010</div>
+            </td>
+            <td align="center">
+                <div class="rond">3/5</div>
             </td>
         </tr>
     </table>
