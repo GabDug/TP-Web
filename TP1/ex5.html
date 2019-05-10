@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercice 5</title>
+    <link rel="stylesheet" type="text/css" href="default-css.css">
+    <style type="text/css">
+        p {
+            background-color: hsla(14, 100%, 53%, 0.6);
+            padding: 10px;
+        }
+        
+        #deuxieme {
+            padding: 10px;
+            border: 2px solid black;
+        }
+        
+        h1 {
+            text-shadow: 2px 2px 5px black;
+        }
+        
+        h2 {
+            border-bottom: 1px solid black;
+        }
+        
+        ul {
+            font-size: large;
+            font-family: fantasy;
+            font-style: oblique;
+            color: rgb(255, 122, 74);
+            list-style-type: circle;
+        }
+        
+        li {
+            display: inline;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: black;
+        }
+        
+        .fade {
+            display: inline-block;
+        }
+        
+        .fade:hover {
+            -webkit-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            transform: scale(1.3);
+            
+        }
+        .fade li:hover {
+            background-color: rgb(235, 169, 145);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TP1</h1>
+
+    <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Aenean imperdiet placerat est ac condimentum. Nulla accumsan lectus a nibh scelerisque venenatis. In in efficitur justo.<br> Quisque vel nulla et nibh gravida egestas. Pellentesque
+        lobortis interdum magna vel vulputate. Etiam facilisis vulputate pharetra. Cras eu massa urna.</p>
+    <h2>Introduction</h2>
+    <p id="deuxieme">Il était une fois trois petits cochons qui mangèrent trois produits laitiers par jour quand tout à coup...<br><br> <strong> PAF ! PAF ! PAF! Le loup !</strong></p>
+    <h2>Mes films préférés</h2>
+    <ul>
+        <div class="fade">
+            <li>
+                Le seigneur des anneaux</li>
+        </div>
+       <div class="fade">
+           <li>
+               Harry Potter et le prisonier d'Azkaban</li>
+       </div>
+       <div class="fade">
+          <li> 
+                Burlesque</li>
+        </div>
+       </div>
+       <div class="fade">
+         <li>
+            American Nightmare</li>
+        </div>
+       <div class="fade">
+        <li>
+            Les Animaux Fantastiques</li>
+        </div>
+    </ul>
+</body>
+
+</html>
