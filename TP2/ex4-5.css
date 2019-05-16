@@ -48,7 +48,7 @@ img {
     outline: 0;
     border: none;
     border-radius: 2px;
-    
+
     position: relative;
     overflow: hidden;
 
@@ -64,7 +64,7 @@ img {
 }
 
 .button:hover {
-    background-color: #6e6e6e 
+    background-color: #6e6e6e
 }
 
 .button-row {
@@ -89,7 +89,7 @@ input {
     border-bottom: 1px solid gainsboro;
 }
 
-input:invalid{
+input:invalid {
     border-color: red;
     caret-color: red;
 }
@@ -115,7 +115,8 @@ th {
     background-color: rgb(255, 0, 0);
 }
 
-td, th {
+td,
+th {
     text-align: center;
     border-width: 1px;
     border-style: solid;

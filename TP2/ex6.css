@@ -1,9 +1,10 @@
 tr {
     text-align: center;
-    border : none;
+    border: none;
 }
 
-td, th {
+td,
+th {
     border-spacing: 10px;
 }
 
