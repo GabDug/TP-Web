@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="default-css.css">
     <link rel="stylesheet" type="text/css" href="ex4-5.css">
     <link rel="stylesheet" type="text/css" href="ex6.css">
+    <link rel="stylesheet" type="text/css" href="ex7.css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@
                     </div>
                 </div>
                 <div class="button-row">
-                    <button name="button" class="button" type="submit">Add</button>
+                    <button name="button" id="add-button" class="button" type="submit">Add</button>
                     <button name="button" class="button" type="button" formnovalidate
                         onclick="return resetTable();">Reset all</button>
                 </div>
@@ -65,6 +66,9 @@
 
 
     <script>
+        var lock;
+
+
         function add() {
 
             (console.log("Add!"));
@@ -81,6 +85,11 @@
             cell2.innerHTML = document.getElementById("last-name").value;
             cell3.innerHTML = document.getElementById("email").value;
             cell4.innerHTML = document.getElementById("role").value;
+
+            /* Not only it will look disabled (css) but it can't be clicked during the period.
+            No need for an alert, it's so annoying. */
+            document.getElementById("add-button").disabled = true;
+            setTimeout(function () { document.getElementById("add-button").disabled = false; }, 3000);
         }
         function resetTable() {
             console.log("Reset form...");

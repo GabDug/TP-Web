@@ -11,3 +11,16 @@ th {
 caption {
     padding-bottom: 10px;
 }
+
+
+.scroll {
+    width: 100%;
+    /* Will automaticaly put X-axis (horizontal) scrollbar if needed. */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Applies only to the last row (not header). Looks weird but is asked. */
+tr:last-child > td{
+    border-bottom: none;
+}
