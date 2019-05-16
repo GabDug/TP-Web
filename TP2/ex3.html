@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>Bow chica wow wow</title>
+    <link rel="stylesheet" type="text/css" href="default-css.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: gainsboro;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto 20px auto;
+            /* TOP RIGHT BOTTOM LEFT */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            -webkit-filter: drop-shadow(3px 3px 3px #222);
+            filter: drop-shadow(3px 3px 3px #222);
+        }
+
+        form {
+            background-color: white;
+            display: block;
+            /*width: 100%;
+            border: 1px solid black;
+            */
+            /*padding: 30px; make margins all around the form (question 4)
+            box-sizing: border-box; resize the box to the screen(question 5)*/
+            -webkit-filter: drop-shadow(3px 3px 3px #222);
+            filter: drop-shadow(3px 3px 3px #222);
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+
+            max-width: 1000px;
+        }
+
+        .button {
+            margin-left: 20px;
+
+            color: #fff;
+            background-color: #c2c2c2;
+
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            cursor: pointer;
+            outline: 0;
+            border: none;
+            border-radius: 2px;
+            
+            position: relative;
+            overflow: hidden;
+
+        
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+
+            vertical-align: middle;
+
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+            filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+        }
+
+        .button:hover {
+            background-color: #838383 
+        }
+
+        .button-row {
+            margin: 10px 0 5px 0;
+        }
+
+        .form-element {
+            margin-right: 10px;
+            margin-bottom: 7px;
+            flex-grow: 1;
+        }
+
+        input,
+        select {
+            width: 100%;
+        }
+
+        input {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border-bottom: 1px solid gainsboro;
+        }
+
+        input:invalid{
+            border-color: red;
+            caret-color: red;
+        }
+
+        .flex-parent {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #flexbox {
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="img/Logo.jpg" alt="Chicago Bulls">
+
+        <form action="" method="GET" id="flexbox">
+            <fieldset>
+                <legend>Who are you?</legend>
+                <div class="flex-parent">
+                    <div class="form-element">
+                        <input type="text" id="name" name="user_name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-element" >
+                        <input type="text" id="family name" name="user_fname" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="email" id="email" name="user_email" placeholder="Email" required>
+                    </div>
+                    <div class="form-element">
+                        <select>
+                            <option value="teacher">I'm a teacher</option>
+                            <option value="student">I'm a student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row"> <button name="button" class="button">Add</button>
+                    <button name="button" class="button">Reset all</button>
+                </div>
+            </fieldset>
+        </form>
+    </header>
+</body>
+
+</html>

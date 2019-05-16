@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bow chica wow wow</title>
+    <meta name="description" content="TP HTML/CSS/JS @ Efrei Paris">
+    <meta name="author" content="Bow Chicka Wow Wow Team">
+
+    <link rel="stylesheet" type="text/css" href="default-css.css">
+    <link rel="stylesheet" type="text/css" href="ex4-5.css">
+    <link rel="stylesheet" type="text/css" href="ex6.css">
+</head>
+
+<body>
+    <img src="img/Logo.jpg" alt="Chicago Bulls">
+    <header class="core-block">
+        <form id="flexbox" action="javascript:void(0);" onsubmit="return add();">
+            <fieldset>
+                <legend>Add a person</legend>
+                <!-- Deleted the name tag, as we don't want to send to a backend -->
+                <!-- aria-label used for screen readers, as there is no apparent label. -->
+                <div class="flex-parent">
+                    <div class="form-element">
+                        <input type="text" id="name" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="text" id="last-name" placeholder="Last Name" aria-label="Last Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="email" id="email" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="form-element">
+                        <select id="role" aria-label="Role">
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button name="button" class="button" type="submit">Add</button>
+                    <button name="button" class="button" type="button" formnovalidate
+                        onclick="return resetTable();">Reset all</button>
+                </div>
+            </fieldset>
+        </form>
+    </header>
+
+    <main class="core-block">
+        <table id="listPeople">
+            <caption>List of People <i>(To Try and Forget About)</i></caption>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </table>
+    </main>
+
+
+    <script>
+        function add() {
+
+            (console.log("Add!"));
+            // The check is done by the browser before submitting the form. We should add another verification in JS!
+            // TODO  
+            var table = document.getElementById("listPeople");
+            // We use Insert row! Better than adding the nodes one by one...
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = document.getElementById("name").value;
+            cell2.innerHTML = document.getElementById("last-name").value;
+            cell3.innerHTML = document.getElementById("email").value;
+            cell4.innerHTML = document.getElementById("role").value;
+        }
+        function resetTable() {
+            console.log("Reset form...");
+            var table = document.getElementById("listPeople");
+
+            var rows = table.getElementsByTagName("tr")
+            console.log("Length");
+            console.log(rows.length);
+            for (var i = rows.length - 1; i > 0; i--) {
+                document.getElementById("listPeople").deleteRow(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

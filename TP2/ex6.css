@@ -1,0 +1,12 @@
+tr {
+    text-align: center;
+    border : none;
+}
+
+td, th {
+    border-spacing: 10px;
+}
+
+caption {
+    padding-bottom: 10px;
+}
