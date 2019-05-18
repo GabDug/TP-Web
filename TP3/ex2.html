@@ -14,29 +14,16 @@
     <link rel="stylesheet" type="text/css" href="ex4-5-TP2.css">
     <link rel="stylesheet" type="text/css" href="ex6-TP2.css">
     <link rel="stylesheet" type="text/css" href="ex7-TP2.css">
-    
+
     <style>
-        body {
-             background-color: gainsboro;
-        }
-    
-        img {
-             display: block;
-             margin-top: 50px;
-             margin-left: auto;
-             margin-right: auto;
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             -webkit-filter: drop-shadow(3px 3px 3px #222);
-            filter: drop-shadow(3px 3px 3px #222);
-            }
-        .nav-button{
-            margin-left: 350px;
-            margin-bottom: 15px;
+        .nav-button {
+            
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: auto;
 
             color: #fff;
-            background-color: #757575;
+            background-color: #534747;
 
             text-transform: uppercase;
             letter-spacing: .5px;
@@ -58,14 +45,27 @@
             -webkit-filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
             filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
         }
-        #task_to_do{
-            margin:auto, 30px, auto, 30px;
+
+        #task_to_do {
+            margin: auto, 30px, auto, 30px;
         }
-        .core-block{
+
+        .core-block {
             margin-top: 30px;
         }
-        #listTasks, #listPeople, #flexbox{
-            visibility: hidden;
+
+        #listPeople,
+        #addPeople {
+           /* visibility: hidden; */
+           display: none;
+        }
+
+        .nav-row {
+            text-align: center;
+        }
+
+        .nav-block {
+            background: none;
         }
     </style>
     </header>
@@ -74,25 +74,29 @@
 <body>
     <img src="img/Logo.jpg" alt="Chicago Bulls">
     <nav class="navigation">
-        <div id="tsk">
+        <div id="tsk" class="core-block nav-block">
+            <div class="nav-row">
             <button name="button" class="nav-button" type="button" formnovalidate
-            onclick="return showUsers();">User</button>
+                onclick="return showUsers();">User</button>
             <button name="button" class="nav-button" type="button" formnovalidate
-            onclick="return showTasks();">Task</button>
-            <div class="core-block">
-                    <table id="listTasks">
-                        <caption>Tasks</caption>
-                        <tr>
-                            <th>USER ID</th>
-                            <th>ID</th>
-                            <th>TITLE</th>
-                            <th>FINISHED</th>
-                        </tr>
-                    </table>
-                </div>
-        </div>
+                onclick="return showTasks();">Task</button>
+        </div></div>
     </nav>
-    <header class="core-block">
+
+    <div class="core-block" id="listTasks">
+        <table>
+            <caption>Tasks</caption>
+            <tr>
+                <th>USER ID</th>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>FINISHED</th>
+            </tr>
+        </table>
+   
+    </div>
+
+    <header class="core-block" id="addPeople">
         <form id="flexbox" action="javascript:void(0);" onsubmit="return add();">
             <fieldset>
                 <legend>Add a person</legend>
@@ -124,9 +128,9 @@
         </form>
     </header>
 
-    <main class="core-block">
+    <main class="core-block" id="listPeople">
         <div class="scroll">
-            <table id="listPeople">
+            <table id="tablePeople" >
                 <caption>Users</caption>
                 <tr>
                     <th>First name</th>
@@ -146,7 +150,7 @@
             (console.log("Add!"));
             // The check is done by the browser before submitting the form. We should add another verification in JS!
             // TODO  
-            var table = document.getElementById("listPeople");
+            var table = document.getElementById("tablePeople");
             // We use Insert row! Better than adding the nodes one by one...
             var row = table.insertRow();
             var cell1 = row.insertCell(0);
@@ -165,25 +169,25 @@
         }
         function resetTable() {
             console.log("Reset form...");
-            var table = document.getElementById("listPeople");
+            var table = document.getElementById("tablePeople");
 
             var rows = table.getElementsByTagName("tr")
             console.log("Length");
             console.log(rows.length);
             for (var i = rows.length - 1; i > 0; i--) {
-                document.getElementById("listPeople").deleteRow(i);
+                document.getElementById("tablePeople").deleteRow(i);
             }
         }
-        function showUsers(){
-            document.getElementById("flexbox").style.visibility = "visible";
-            document.getElementById("listPeople").style.visibility = "visible";
-            document.getElementById("listTasks").style.visibility = "hidden";
-            
+        function showUsers() {
+            document.getElementById("addPeople").style.display = "block";
+            document.getElementById("listPeople").style.display = "block";
+            document.getElementById("listTasks").style.display = "none";
+
         }
-        function showTasks(){
-            document.getElementById("flexbox").style.visibility = "hidden";
-            document.getElementById("listPeople").style.visibility = "hidden";
-            document.getElementById("listTasks").style.visibility = "visible";
+        function showTasks() {
+            document.getElementById("addPeople").style.display = "none";
+            document.getElementById("listPeople").style.display = "none";
+            document.getElementById("listTasks").style.display = "block";
         }
     </script>
 </body>
