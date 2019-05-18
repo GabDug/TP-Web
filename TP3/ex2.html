@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bow chica wow wow</title>
+    <meta name="description" content="TP HTML/CSS/JS @ Efrei Paris">
+    <meta name="author" content="Bow Chicka Wow Wow Team">
+
+    <link rel="stylesheet" type="text/css" href="default-css-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex4-5-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex6-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex7-TP2.css">
+    
+    <style>
+        body {
+             background-color: gainsboro;
+        }
+    
+        img {
+             display: block;
+             margin-top: 50px;
+             margin-left: auto;
+             margin-right: auto;
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             -webkit-filter: drop-shadow(3px 3px 3px #222);
+            filter: drop-shadow(3px 3px 3px #222);
+            }
+        .nav-button{
+            margin-left: 350px;
+            margin-bottom: 15px;
+
+            color: #fff;
+            background-color: #757575;
+
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            cursor: pointer;
+            outline: 0;
+            border: none;
+            border-radius: 2px;
+
+            position: relative;
+            overflow: hidden;
+
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+
+            vertical-align: middle;
+
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+            filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+        }
+        #task_to_do{
+            margin:auto, 30px, auto, 30px;
+        }
+        .core-block{
+            margin-top: 30px;
+        }
+        #listTasks, #listPeople, #flexbox{
+            visibility: hidden;
+        }
+    </style>
+    </header>
+</head>
+
+<body>
+    <img src="img/Logo.jpg" alt="Chicago Bulls">
+    <nav class="navigation">
+        <div id="tsk">
+            <button name="button" class="nav-button" type="button" formnovalidate
+            onclick="return showUsers();">User</button>
+            <button name="button" class="nav-button" type="button" formnovalidate
+            onclick="return showTasks();">Task</button>
+            <div class="core-block">
+                    <table id="listTasks">
+                        <caption>Tasks</caption>
+                        <tr>
+                            <th>USER ID</th>
+                            <th>ID</th>
+                            <th>TITLE</th>
+                            <th>FINISHED</th>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+    </nav>
+    <header class="core-block">
+        <form id="flexbox" action="javascript:void(0);" onsubmit="return add();">
+            <fieldset>
+                <legend>Add a person</legend>
+                <!-- Deleted the name tag, as we don't want to send to a backend -->
+                <!-- aria-label used for screen readers, as there is no apparent label. -->
+                <div class="flex-parent">
+                    <div class="form-element">
+                        <input type="text" id="name" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="text" id="last-name" placeholder="Last Name" aria-label="Last Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="email" id="email" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="form-element">
+                        <select id="role" aria-label="Role">
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button name="button" id="add-button" class="button" type="submit">Add</button>
+                    <button name="button" class="button" type="button" formnovalidate
+                        onclick="return resetTable();">Reset all</button>
+                </div>
+            </fieldset>
+        </form>
+    </header>
+
+    <main class="core-block">
+        <div class="scroll">
+            <table id="listPeople">
+                <caption>Users</caption>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+
+    <script>
+        var lock;
+        function add() {
+
+            (console.log("Add!"));
+            // The check is done by the browser before submitting the form. We should add another verification in JS!
+            // TODO  
+            var table = document.getElementById("listPeople");
+            // We use Insert row! Better than adding the nodes one by one...
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = document.getElementById("name").value;
+            cell2.innerHTML = document.getElementById("last-name").value;
+            cell3.innerHTML = document.getElementById("email").value;
+            cell4.innerHTML = document.getElementById("role").value;
+
+            /* Not only it will look disabled (css) but it can't be clicked during the period.
+            No need for an alert, it's so annoying. */
+            document.getElementById("add-button").disabled = true;
+            setTimeout(function () { document.getElementById("add-button").disabled = false; }, 3000);
+        }
+        function resetTable() {
+            console.log("Reset form...");
+            var table = document.getElementById("listPeople");
+
+            var rows = table.getElementsByTagName("tr")
+            console.log("Length");
+            console.log(rows.length);
+            for (var i = rows.length - 1; i > 0; i--) {
+                document.getElementById("listPeople").deleteRow(i);
+            }
+        }
+        function showUsers(){
+            document.getElementById("flexbox").style.visibility = "visible";
+            document.getElementById("listPeople").style.visibility = "visible";
+            document.getElementById("listTasks").style.visibility = "hidden";
+            
+        }
+        function showTasks(){
+            document.getElementById("flexbox").style.visibility = "hidden";
+            document.getElementById("listPeople").style.visibility = "hidden";
+            document.getElementById("listTasks").style.visibility = "visible";
+        }
+    </script>
+</body>
+
+</html>
