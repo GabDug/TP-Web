@@ -17,21 +17,26 @@
 
     <style>
         body {
-             background-color: gainsboro;
+            background-color: gainsboro;
         }
-    
+        
         img {
-             display: block;
-             margin-top: 20px;
-             margin-bottom: 20px;
-             margin-left: auto;
-             margin-right: auto;
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             -webkit-filter: drop-shadow(3px 3px 3px #222);
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            -webkit-filter: drop-shadow(3px 3px 3px #222);
             filter: drop-shadow(3px 3px 3px #222);
-            }
+        }
+        
+        .blocked {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
     </style>
     </header>
 </head>
@@ -62,9 +67,8 @@
                     </div>
                 </div>
                 <div class="button-row">
-                    <button name="button" id="add-button" class="button" type="submit">Add</button>
-                    <button name="button" class="button" type="button" formnovalidate
-                        onclick="return resetTable();">Reset all</button>
+                    <button name="button" id="add-button" class="button blocked" type="submit">Add</button>
+                    <button name="button" class="button" type="button" formnovalidate onclick="return resetTable();">Reset all</button>
                 </div>
             </fieldset>
         </form>
@@ -86,42 +90,71 @@
 
 
     <script>
-        var lock;
-
+        // block for the first 5s 
+        var firsttimer = window.setInterval(clickable, 6000);
+        var timer = 5;
 
         function add() {
+            // To completly disable the button
+            // document.getElementById("add-button").disabled = true;
 
-            (console.log("Add!"));
-            // The check is done by the browser before submitting the form. We should add another verification in JS!
-            // TODO  
-            var table = document.getElementById("listPeople");
-            // We use Insert row! Better than adding the nodes one by one...
-            var row = table.insertRow();
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            cell1.innerHTML = document.getElementById("name").value;
-            cell2.innerHTML = document.getElementById("last-name").value;
-            cell3.innerHTML = document.getElementById("email").value;
-            cell4.innerHTML = document.getElementById("role").value;
+            if (document.getElementById("add-button").classList.contains("blocked")) {
+                alert("Don't click! Just wait a few seconds...")
+            } else {
+                (console.log("Add!"));
+                var table = document.getElementById("listPeople");
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                cell1.innerHTML = document.getElementById("name").value;
+                cell2.innerHTML = document.getElementById("last-name").value;
+                cell3.innerHTML = document.getElementById("email").value;
+                cell4.innerHTML = document.getElementById("role").value;
 
-            /* Not only it will look disabled (css) but it can't be clicked during the period.
-            No need for an alert, it's so annoying. */
-            document.getElementById("add-button").disabled = true;
-            setTimeout(function () { document.getElementById("add-button").disabled = false; }, 3000);
+                blocked();
+            }
         }
+
         function resetTable() {
             console.log("Reset form...");
             var table = document.getElementById("listPeople");
 
             var rows = table.getElementsByTagName("tr")
-            console.log("Length");
-            console.log(rows.length);
             for (var i = rows.length - 1; i > 0; i--) {
                 document.getElementById("listPeople").deleteRow(i);
             }
         }
+
+
+
+        function clickable() {
+            // document.getElementById("add-button").disabled = false;
+            var but = document.getElementById("add-button");
+            but.classList.remove("blocked");
+        }
+
+        function blocked() {
+            // document.getElementById("add-button").disabled = false;
+            document.getElementById("add-button").classList.add("blocked");
+            timer = 10;
+        }
+
+
+        function updateTimer() {
+            var tim = document.getElementById("add-button");
+            if (timer > 0) {
+                console.log(timer)
+                tim.innerText = "Add (" + timer + ")";
+                timer--;
+            } else {
+                tim.innerText = "Add";
+            }
+        }
+
+        // Update timer every second
+        var dtim = setInterval(updateTimer, 1000);
     </script>
 </body>
 

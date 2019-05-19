@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bow chica wow wow</title>
+    <meta name="description" content="TP HTML/CSS/JS @ Efrei Paris">
+    <meta name="author" content="Bow Chicka Wow Wow Team">
+
+    <link rel="stylesheet" type="text/css" href="default-css-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex4-5-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex6-TP2.css">
+    <link rel="stylesheet" type="text/css" href="ex7-TP2.css">
+
+    <style>
+        .nav-button {
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: auto;
+            color: #fff;
+            background-color: #534747;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            cursor: pointer;
+            outline: 0;
+            border: none;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+            vertical-align: middle;
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+            filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+        }
+        
+        #task_to_do {
+            margin: auto, 30px, auto, 30px;
+        }
+        
+        .core-block {
+            margin-top: 30px;
+        }
+        
+        #listPeople,
+        #addPeople {
+            /* visibility: hidden; */
+            display: none;
+        }
+        
+        .nav-row {
+            text-align: center;
+        }
+        
+        .nav-block {
+            background: none;
+        }
+        
+        .center {
+            text-align: center;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .pagination {
+            margin-top: 15px;
+        }
+        
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
+        
+        .pagination a.active {
+            background-color: rgb(255, 159, 159);
+            color: white;
+            border: 1px solid rgb(255, 159, 159);
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+        
+        .pagination a:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .pagination a:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        #btn-pages,
+        #btn-pages-binary {
+            display: inline-block;
+        }
+    </style>
+    </header>
+</head>
+
+<body>
+    <img src="img/Logo.jpg" alt="Chicago Bulls">
+    <nav class="navigation">
+        <div id="tsk" class="core-block nav-block">
+            <div class="nav-row">
+                <button name="button" class="nav-button" type="button" formnovalidate onclick="return showUsers();">User</button>
+                <button name="button" class="nav-button" type="button" formnovalidate onclick="return showTasks();">Task</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="core-block" id="listTasks">
+        <table id="tableTasks">
+            <caption>Tasks</caption>
+            <tr>
+                <th>USER ID</th>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>FINISHED</th>
+            </tr>
+        </table>
+        <div class="center">
+            <div class="pagination">
+
+                <div id="btn-pages"></div>
+                <div id="btn-pages-binary">
+                    <a id="btn-prev" href="javascript:prevPage()">&laquo;</a>
+                    <a id="btn-next" href="javascript:nextPage()">&raquo;</a></div>
+            </div>
+        </div>
+
+    </div>
+
+    <header class="core-block" id="addPeople">
+        <form id="flexbox" action="javascript:void(0);" onsubmit="return add();">
+            <fieldset>
+                <legend>Add a person</legend>
+                <!-- Deleted the name tag, as we don't want to send to a backend -->
+                <!-- aria-label used for screen readers, as there is no apparent label. -->
+                <div class="flex-parent">
+                    <div class="form-element">
+                        <input type="text" id="name" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="text" id="last-name" placeholder="Last Name" aria-label="Last Name" required>
+                    </div>
+                    <div class="form-element">
+                        <input type="email" id="email" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="form-element">
+                        <select id="role" aria-label="Role">
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button name="button" id="add-button" class="button" type="submit">Add</button>
+                    <button name="button" class="button" type="button" formnovalidate onclick="return resetTable();">Reset all</button>
+                </div>
+            </fieldset>
+        </form>
+    </header>
+
+    <main class="core-block" id="listPeople">
+        <div class="scroll">
+            <table id="tablePeople">
+                <caption>Users</caption>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+
+    <script>
+        window.onload = getTasks();
+
+        // createTask(2, 2, "Test","Task")
+
+        var lock;
+
+        function add() {
+
+            (console.log("Add!"));
+            // The check is done by the browser before submitting the form. We should add another verification in JS!
+            // TODO  
+            var table = document.getElementById("tablePeople");
+            // We use Insert row! Better than adding the nodes one by one...
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = document.getElementById("name").value;
+            cell2.innerHTML = document.getElementById("last-name").value;
+            cell3.innerHTML = document.getElementById("email").value;
+            cell4.innerHTML = document.getElementById("role").value;
+
+            /* Not only it will look disabled (css) but it can't be clicked during the period.
+            No need for an alert, it's so annoying. */
+            document.getElementById("add-button").disabled = true;
+            setTimeout(function() {
+                document.getElementById("add-button").disabled = false;
+            }, 3000);
+        }
+
+        function resetTable() {
+            var table = document.getElementById("tablePeople");
+
+            var rows = table.getElementsByTagName("tr")
+            console.log("Length");
+            console.log(rows.length);
+            for (let i = rows.length - 1; i > 0; i--) {
+                document.getElementById("tablePeople").deleteRow(i);
+            }
+        }
+
+        function showUsers() {
+            document.getElementById("addPeople").style.display = "block";
+            document.getElementById("listPeople").style.display = "block";
+            document.getElementById("listTasks").style.display = "none";
+
+        }
+
+        function showTasks() {
+            document.getElementById("addPeople").style.display = "none";
+            document.getElementById("listPeople").style.display = "none";
+            document.getElementById("listTasks").style.display = "block";
+
+        }
+        var perstdata;
+        var beg = 0;
+        var pageSize = 20;
+        var currentPage = 1;
+        var numPages
+
+        function getTasks() {
+            fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(function(data) {
+                    // We observe that 200 JSON dict are downloaded in an array
+                    // ex: {userId: 6, id: 101, title: "explicabo enim cumque porro aperiam occaecati minima", completed: false}
+                    console.log('data', data)
+                    perstdata = data;
+                    // data.forEach(el => {
+                    //     console.log(el)
+                    //     createTask(el.userId, el.id, el.title, el.completed)
+                    // });
+                    numPages = Math.ceil(data.length / pageSize);
+                    paginatePrint(1)
+                })
+        }
+
+        function createTask(userId, id, title, completed) {
+            var table = document.getElementById("tableTasks");
+
+            var tblBody = document.getElementById("tableTasks").tBodies[0];
+            var newRow = tblBody.insertRow(-1);
+            var newCell0 = newRow.insertCell(0);
+            newCell0.appendChild(document.createTextNode(userId));
+            var newCell1 = newRow.insertCell(1);
+            newCell1.appendChild(document.createTextNode(id));
+            var newCell2 = newRow.insertCell(2);
+            newCell2.appendChild(document.createTextNode(title));
+            var newCell3 = newRow.insertCell(3);
+            comp = completed ? "✔️" : "❌"
+            newCell3.appendChild(document.createTextNode(comp));
+        }
+
+        function clearTasks() {
+            var table = document.getElementById("tableTasks");
+
+            var rows = table.getElementsByTagName("tr")
+
+            for (let i = rows.length - 1; i > 0; i--) {
+                document.getElementById("tableTasks").deleteRow(i);
+            }
+        }
+
+
+        function paginatePrint(page) {
+            if (page < 1) {
+                page = 1;
+            }
+            if (page > numPages) {
+                page = numPages;
+            }
+
+            beg = (page - 1) * pageSize;
+            console.log("Paginate")
+            clearTasks();
+
+            for (let i = beg; i < (beg + pageSize); i++) {
+                console.log(i);
+                el = perstdata[i];
+                console.log(el);
+                createTask(el.userId, el.id, el.title, el.completed);
+            }
+
+            // document.getElementById('btn-next').style.visibility
+            listing_table = document.getElementById("btn-pages");
+            listing_table.innerHTML = "";
+
+            for (let i = 1; i < (numPages + 1); i++) {
+                // If too many pages, display only 1, 2 (i-1), i, (i+1), last-1 and last pages.
+                if (numPages > 7) {
+                    if ((i == page + 1 || i == page - 1) && !(i == 1 || i == numPages)) {
+                        listing_table.innerHTML += "<a href='#''>...</a>";
+                        continue
+                    }
+                    if (!(i == 1 || i == 2 || i == page || i == numPages - 1 || i == numPages)) {
+                        console.log("Don't print " + i)
+                        continue
+                    }
+
+                }
+
+                if (i == page) {
+                    // console.log("Yas")
+                    listing_table.innerHTML += "<a class='active' href='#''>" + i + "</a>";
+                } else {
+                    listing_table.innerHTML += "<a href='#''>" + i + "</a>";
+                }
+            }
+            //page_span.innerHTML = page;
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                paginatePrint(currentPage);
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < numPages) {
+                currentPage++;
+                paginatePrint(currentPage);
+            }
+        }
+    </script>
+</body>
+
+</html>
