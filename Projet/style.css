@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-size: cover;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
+
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  padding: 10px;
+
+}
+
+.container.cflex {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* NAVBAR */
+header {
+  background: rgb(150, 9, 9);
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 30px;
+  padding-top: 23px;
+  position: relative;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  width: 0;
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+
+
+
+.title {
+  margin-top: 100px;
+}
+
+.title h1 {
+  font-size: 32px;
+  line-height: 10px;
+}
+
+.title h2 {
+  font-size: 16px;
+}
+
+title {
+  text-transform: uppercase;
+}
+
+
+
+footer {
+  margin-top: 50px;
+  font-weight: 100;
+  text-align: left;
+  background-color: forestgreen;
+  color: whitesmoke;
+  padding: 10px;
+}

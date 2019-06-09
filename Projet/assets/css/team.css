@@ -1,0 +1,103 @@
+  .containere {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .photos {
+    display: block;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    float: left;
+
+  }
+
+  .photosListe {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100px;
+    margin-left: -25px;
+    margin-top: 50px;
+  }
+
+  .team li {
+    padding-bottom: 10px;
+  }
+
+  .team div {
+    width: 800px;
+    margin: auto;
+  }
+
+  h1 {
+    font: 100px arial;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    color: rgb(150, 9, 9);
+  }
+
+  h2 {
+    font: 50px arial;
+    color: rgb(150, 9, 9);
+  }
+
+
+  .team ul {
+    font-size: 20px;
+    text-align: center;
+    float: right;
+    color: black;
+    margin-top: -200px;
+    width: 400px;
+    width: 275px;
+  }
+
+  p {
+    font: 15px arial;
+    text-align: center;
+  }
+
+
+  .box {
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    margin: 10px auto;
+    box-shadow: 0px 0px 10px 2px grey;
+    border: 10px solid rgb(150, 9, 9);
+    background-image: url('../../assets/img/puppies.jpg');
+    /**/
+    background-size: cover;
+    text-align: center;
+  }
+
+  .boxe {
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    margin: 10px auto;
+    border: 10px solid rgb(150, 9, 9);
+    background-color: whitesmoke;
+    background-size: cover;
+  }
+
+
+  .container h1 {
+    margin: 0px;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+    top: 50%;
+    color: black;
+    transform: translateY(-50%);
+  }
+
+
+  .logo {
+    float: left;
+    padding-left: 25px;
+  }
