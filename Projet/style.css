@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
-
 body {
   margin: 0;
   padding: 0;
@@ -9,12 +8,10 @@ body {
   font-weight: 800;
 }
 
-
 .container {
   margin: 0 auto;
   width: 90%;
   padding: 10px;
-
 }
 
 .container.cflex {
@@ -24,26 +21,91 @@ body {
 
 
 /* NAVBAR */
-header {
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: rgb(150, 9, 9);
 }
 
-header::after {
-  content: '';
-  display: table;
-  clear: both;
+.logo {
+  margin: 0 0 0 0.45em;
 }
 
-nav {
-  float: right;
+.logo a {
+  color: rgb(255, 255, 255);
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
+.logo, .navigation {
   list-style: none;
+  text-transform: uppercase;
 }
 
+.logo a, .navigation a {
+  text-decoration: none;
+}
+
+.navigation {
+  display: flex;
+  margin-top: .4em;
+  margin-bottom: .4em;
+}
+
+.navigation a {
+  display: block;
+  padding: .6em;
+  color: white;
+}
+/*
+.navigation a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  width: 0;
+  transition: all ease-in-out 250ms;
+}*/
+
+
+/* *********** media queries *********** */
+@media all and (max-width: 990px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .logo {
+    margin: 0;
+  }
+  .navigation {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+/* ****** ****** */
+@media all and (max-width: 600px) {
+  .logo {
+    margin: 0.25em 0;
+    align-self: left;
+    /* align the logo to the left side of 'flex-container' */
+  }
+  .navigation {
+    flex-direction: column;
+  }
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}
+
+
+/* NAVBAR */
 nav li {
   display: inline-block;
   margin-left: 30px;
@@ -58,27 +120,9 @@ nav a {
   font-size: 14px;
 }
 
-nav a:hover {
-  color: #000000;
-}
-
-nav a::before {
-  content: '';
-  display: block;
-  height: 5px;
-  background-color: #fff;
-  position: absolute;
-  top: 0;
-  width: 0;
-  transition: all ease-in-out 250ms;
-}
-
 nav a:hover::before {
   width: 100%;
 }
-
-
-
 
 .title {
   margin-top: 100px;
@@ -97,13 +141,11 @@ title {
   text-transform: uppercase;
 }
 
-
-
 footer {
   margin-top: 50px;
   font-weight: 100;
   text-align: left;
-  background-color: forestgreen;
+  background-color: rgb(65, 65, 65);
   color: whitesmoke;
   padding: 10px;
 }

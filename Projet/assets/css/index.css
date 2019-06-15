@@ -7,8 +7,10 @@
     background-size: cover;
     height: 500px;
   
-    -webkit-filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
-    filter: drop-shadow(2px 2px 2px rgb(88, 88, 88));
+
+    box-shadow: 0px 1px 35px -7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 35px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 35px -7px rgba(0,0,0,0.75);
   }
   
   .jumbotron .container {
@@ -27,6 +29,10 @@
     font-size: 20px;
     color: rgb(34, 34, 34);
   }
+
+  .jumbotron a {
+    margin-top: 3em;
+  }
   
 
   /* Ptit truc après */
@@ -37,6 +43,7 @@
     align-content: center;
     width: 80%;
     padding: 15px;
+    margin: auto;
   
   }
   
@@ -75,9 +82,9 @@
   }
   
   form .submit {
-    background-color: rgb(6, 73, 6);
+    background-color: rgb(54, 54, 54);
     border-color: transparent;
-    color: rgb(48, 48, 48);
+    color: rgb(228, 228, 228);
     font-size: 20px;
     letter-spacing: 2px;
     height: 50px;
