@@ -1,7 +1,7 @@
 /* IMAGE + CTA (Call to Adoption) */
 
 .jumbotron {
-    background-position: center;
+  background-position: 50% 55%;
     background-image: url('../../assets/img/main_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,17 +21,19 @@
   .jumbotron h1 {
     color: rgb(0, 0, 0);
     font-size: 48px;
-    font-family: 'Shift', sans-serif;
     font-weight: bold;
+    font-weight: 400;
   }
   
   .jumbotron p {
     font-size: 20px;
     color: rgb(34, 34, 34);
+    font-weight: 400;
   }
 
   .jumbotron a {
     margin-top: 3em;
+    font-weight: 800;
   }
   
 
@@ -39,6 +41,7 @@
   #presentation {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
     width: 80%;
@@ -52,22 +55,42 @@
   }
   
   #presentation .img {
+    margin: auto;
     flex-grow: 1;
   }
   
   #presentation img {
-    float: right;
-    padding-left: 25px;
+
   }
 
 
   /* COntact form */
+  .title {
+    margin-top: 100px;
+    padding: 15px;
+  }
+  
+  .title h1 {
+    font-size: 32px;
+    line-height: 10px;
+  }
+  
+  .title h2 {
+    font-size: 16px;
+  }
+  
+  title {
+    text-transform: uppercase;
+  }
+
   form {
     margin-top: 50px;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
   .form-control {
-    width: 600px;
+    width:100%;
     background: transparent;
     border: none;
     outline: none;

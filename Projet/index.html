@@ -7,18 +7,20 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/Projet/">
-  <link rel="icon" href="assets/img/Samoyede.jpg" />
+  <link rel="icon" href="assets/img/dog-icon.png" />
+
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 </head>
 
-<header class="flex-container">
+<header>
   <!--Navigation Bar-->
   <!-- <div>
     <img src="Samoyede.jpg" width="50" height="67" onclick="location.href='index.html';" style="cursor: pointer;">
   </div>-->
-
-  <h1 class="logo"><a href="#">Dogs' Thief</a></h1>    
+  <div class="center-container">
+    <div class="flex-container">
+      <h1 class="logo"><a href="#">Dogs' Thief</a></h1>
       <ul class="navigation">
         <li><a href="team.html">Our team</a></li>
         <li><a href="dogs.html">Our dogs</a></li>
@@ -27,72 +29,64 @@
         <li><a href="compare.html">You hesitate ?</a></li>
         <li><a href="spa.html">Go further ... </a></li>
       </ul>
+    </div>
+  </div>
 </header>
 
 <body>
   <div class="jumbotron">
-    <div class="container cflex">
-      <h1>DOGS' THIEF</h1>
-      <p>Dog breeder since 1983.</p>
-      <a href="#">Who are we ?</a>
+    <div class="center-container">
+      <div class="container cflex">
+        <h1>DOGS' THIEF</h1>
+        <p>Dog breeder since 1983.</p>
+        <a href="#">Who are we ?</a>
+      </div>
     </div>
   </div>
 
 
-  <div id="presentation">
+  <div id="presentation" class="center-container">
     <div class="text">
       <h1 style="margin-top:15px;font-size:40px;font-weight:200">DOGS' THIEFS</h1>
-      <p>Our mission ? Provide good doggos to good people.</p>
-      <a>Learn more</a>
+      <p>Our mission ? Provide good doggos to good people.<br/>
+      Our dogs are good, our mission is noble.<br/>
+    Sidenote: we are not thiefs. It's just a name.</p>
+      <a class="button">Learn more</a>
     </div>
     <div class="img">
-      <img alt="Samoyed" src="assets/img/Samoyede.jpg" style="width:40%;height:auto;">
+      <img alt="Samoyed" src="assets/img/dog-ugly-costume.png" style="width:200px;height:auto;">
+      <p><i>"You go Doggo !"</i></p>
     </div>
   </div>
   <!--
   <iframe width="1280" height="720" src="https://www.youtube.com/embed/l2HbSRf9Gpg?rel=0" frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   -->
-  <div class="container cflex">
-    <div class="box" onclick="location.href='Equipe.html';" style="cursor: pointer;">
-      <h1>Our team</h1>
-    </div>
-    <div class="box" onclick="location.href='site.html';" style="cursor: pointer;">
-      <h1>Our doggos</h1>
-    </div>
-    <div class="box" onclick="location.href='Equipe.html';" style="cursor: pointer;">
-      <h1>Adopt a doggo</h1>
-    </div>
-    <div class="box" onclick="location.href='site.html';" style="cursor: pointer;">
-      <h1>According to the month you are ...</h1>
-    </div>
-    <div class="box" onclick="location.href='site.html';" style="cursor: pointer;">
-      <h1>You hesitate ?</h1>
-    </div>
-    <div class="box" onclick="location.href='https://www.la-spa.fr/';" style="cursor: pointer;">
-      <h1>Go further ...</h1>
-    </div>
-  </div>
 
 
-  <div class=" boxe title">
-    <h1>CONTACT US, THIEF</h1><br>
-    <h2>Who let's the dogs out ? <i>woof, woof, woof, woof ...</i></h2>
-  
-    <form>
-      <input type="text" name="Name" class="form-control" placeholder="Name" required> <br>
-      <input type="text" name="Surname" class="form-control" placeholder="Surname" required><br>
-      <input type="email" name="email" class="form-control" placeholder="Email" required><br>
-      <textarea name="message" class="form-control" placeholder="Message" rows="4" required></textarea><br>
-      <input type="submit" name="" class="form-control submit" value="ENVOYEZ UN MESSAGE">
-    </form>
+  <div class="center-container">
+    <div class="boxe title">
+      <h1>CONTACT US, THIEF</h1><br>
+      <h2>Who let the dogs out ? <i>woof, woof, woof, woof ...</i></h2>
+      <p>Ask us for any information !</p>
+
+      <form>
+        <input type="text" name="Name" class="form-control" placeholder="Name" required> <br>
+        <input type="text" name="Surname" class="form-control" placeholder="Surname" required><br>
+        <input type="email" name="email" class="form-control" placeholder="Email" required><br>
+        <textarea name="message" class="form-control" placeholder="Message" rows="4" required></textarea><br>
+        <input type="submit" name="" class="form-control submit" value="ENVOYEZ UN MESSAGE">
+      </form>
+    </div>
   </div>
 
   <footer>
-    <div class="container">
-      <h2 style="font-weight:300">Dogs' thiefs</h2>
-      <p>Credits : Dogs' thiefs Inc.<br>
-        Copyright 2019</p>
+    <div class="center-container">
+      <div class="container">
+        <h2 style="font-weight:300">Dogs' thiefs</h2>
+        <p>Credits : Dogs' thiefs Inc.<br>
+          Copyright 2019</p>
+      </div>
     </div>
   </footer>
 </body>
