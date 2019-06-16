@@ -112,25 +112,3 @@
 .push--top {
     margin-top: 20px;
 }
-
-/*------------------------------*\
-            Footer
-\*------------------------------*/
-.footer {
-    background: rgb(41, 41, 41);
-    color: #d3d3d3;
-    height: 300px;
-    position: relative;
-}
-
-.footer .footer-bottom {
-    background: #333;
-    color: #686868;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    padding-top: 20px;
-}
